@@ -3,7 +3,6 @@ $(document).ready(function() {
 
     $(sign_button).click(function(e){
         e.preventDefault();
-
-        alert("You've been hacked!!! :)");
+        $('#myModal').modal('show');
     });
 });
