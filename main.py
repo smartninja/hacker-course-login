@@ -36,7 +36,26 @@ class LoginHandler(BaseHandler):
     def get(self):
         return self.render_template("google-login.html")
 
+
+class InsecureLoginHandler(BaseHandler):
+    def get(self):
+        return self.render_template("non-secure-login.html")
+
+    def post(self):
+        email = self.request.get("email")
+        password = self.request.get("password")
+        # don't do anything with it
+
+        return self.render_template("non-secure-thanks.html")
+
+
+class InsecureLoginThanksHandler(BaseHandler):
+    def get(self):
+        return self.render_template("non-secure-thanks.html")
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
     webapp2.Route('/login', LoginHandler),
+    webapp2.Route('/login2', InsecureLoginHandler),
+    webapp2.Route('/login2/thanks', InsecureLoginThanksHandler),
 ], debug=True)

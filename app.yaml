@@ -8,6 +8,14 @@ handlers:
 - url: /assets
   static_dir: assets
 
+- url: /login2
+  script: main.app
+  secure: never
+
+- url: /login2/thanks
+  script: main.app
+  secure: never
+
 - url: .*
   script: main.app
   secure: always
